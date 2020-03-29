@@ -10,6 +10,7 @@
 - Bryan Liles
 - Claudio Poli
 - Cyril Rohr
+- Datt Dongare
 - Fritz Lee
 - Feña Agar
 - Hnat Kubov

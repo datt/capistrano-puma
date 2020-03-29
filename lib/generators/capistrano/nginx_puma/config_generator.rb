@@ -11,6 +11,7 @@ module Capistrano
         def copy_template
           copy_file "../../../../capistrano/templates/puma.rb.erb", "#{templates_path}/puma.rb.erb"
           copy_file "../../../../capistrano/templates/nginx_conf.erb", "#{templates_path}/nginx_conf.erb"
+          copy_file "../../../../capistrano/templates/puma_service.erb", "#{templates_path}/puma_service.erb"
           # copy_file "puma.rb.erb", "#{templates_path}/puma.rb.erb"
           # copy_file "puma_init.erb", "#{templates_path}/puma_init.erb"
           # copy_file "logrotate.erb", "#{templates_path}/logrotate.erb"

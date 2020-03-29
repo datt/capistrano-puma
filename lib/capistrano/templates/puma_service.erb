@@ -1,13 +1,13 @@
 [Unit]
-Description=<%= fetch(:nginx_config_name) %> Puma Server
+Description=<%= fetch(:puma_service_name) %> Puma Server
 After=network.target
 
 [Service]
 Type=simple
 User=deploy
-WorkingDirectory=/var/www/<%= fetch(:nginx_config_name) %>/current
-ExecStart=/home/deploy/.rvm/bin/rvm <%= RUBY_VERSION %> do bundle exec pumactl -S /var/www/<%= fetch(:nginx_config_name) %>/shared/tmp/pids/puma.state -F /var/www/<%= fetch(:nginx_config_name) %>/shared/puma.rb start
-ExecStop=/home/deploy/.rvm/bin/rvm <%= RUBY_VERSION %> do bundle exec pumactl -S /var/www/<%= fetch(:nginx_config_name) %>/shared/tmp/pids/puma.state -F /var/www/<%= fetch(:nginx_config_name) %>/shared/puma.rb stop
+WorkingDirectory=/var/www/<%= fetch(:puma_service_name) %>/current
+ExecStart=/home/deploy/.rvm/bin/rvm <%= RUBY_VERSION %> do bundle exec pumactl -S /var/www/<%= fetch(:puma_service_name) %>/shared/tmp/pids/puma.state -F /var/www/<%= fetch(:puma_service_name) %>/shared/puma.rb start
+ExecStop=/home/deploy/.rvm/bin/rvm <%= RUBY_VERSION %> do bundle exec pumactl -S /var/www/<%= fetch(:puma_service_name) %>/shared/tmp/pids/puma.state -F /var/www/<%= fetch(:puma_service_name) %>/shared/puma.rb stop
 TimeoutSec=45
 Restart=always
 

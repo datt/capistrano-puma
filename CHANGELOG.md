@@ -1,4 +1,6 @@
 ## Changelog
+- 4.0.1
+  - Support Puma Service
 - 4.0.0:
   - Support puma 4.x
 - 3.1.0:
