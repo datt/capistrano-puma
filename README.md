@@ -25,6 +25,7 @@ And then execute:
     install_plugin Capistrano::Puma::Jungle # if you need the jungle tasks
     install_plugin Capistrano::Puma::Monit  # if you need the monit tasks
     install_plugin Capistrano::Puma::Nginx  # if you want to upload a nginx site template
+    install_plugin Capistrano::Puma::PumaService
 ```
 
 To prevent loading the hooks of the plugin, add false to the load_hooks param.
@@ -34,6 +35,7 @@ To prevent loading the hooks of the plugin, add false to the load_hooks param.
     require 'capistrano/puma'
     install_plugin Capistrano::Puma, load_hooks: false  # Default puma tasks without hooks
     install_plugin Capistrano::Puma::Monit, load_hooks: false  # Monit tasks without hooks
+    install_plugin Capistrano::Puma::PumaService
 ```
 
 To make it work with rvm, rbenv and chruby, install the plugin after corresponding library inclusion.
@@ -64,12 +66,12 @@ Ensure that `tmp/pids` and ` tmp/sockets log` are shared (via `linked_dirs`):
 
 To upload a nginx site config (eg. /etc/nginx/sites-enabled/) use:
 ```ruby
-cap production puma:nginx_config
+bundle exec cap production puma:nginx_config
 ```
 
 To customize these two templates locally before uploading use:
 ```
-rails g capistrano:nginx_puma:config
+bundle exec rails g capistrano:nginx_puma:config
 ```
 
 if your nginx server configuration is not located in `/etc/nginx`, you may need to customize:
@@ -85,6 +87,14 @@ set :puma_nginx, :foo
 or define a standalone one:
 ```ruby
 role :puma_nginx, %w{root@example.com}
+```
+
+
+### Puma Service
+
+To upload a nginx site config (eg. /etc/systemd/system/) use:
+```ruby
+bundle exec cap production puma:puma_service_config
 ```
 
 ### Jungle
